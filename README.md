@@ -11,6 +11,8 @@ You can find this art work on my:
 - Rhinoceros7 and Grasshopper
 - the example files use some plugins for Grasshopper which you can easily find at https://www.food4rhino.com/en
 
+![image](https://user-images.githubusercontent.com/55064918/193573000-d1d56457-9f55-43d9-b18d-b108b2912dfd.png)
+
 ## A basic example of this algorithm is shown in these videos:
 https://user-images.githubusercontent.com/55064918/193561009-aa3376db-462c-4caf-9885-9bca9c966eb8.mp4
 
