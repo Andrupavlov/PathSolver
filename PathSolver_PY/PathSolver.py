@@ -1,4 +1,4 @@
-""" PathSolver-v0.03.2
+""" PathSolver-v0.03.3
     Inputs:
         SOLVER: type solver "ByGravity" or "ByDirect" (str)
         START_POINT_LIST: start point for solver (Point3d: list)
