@@ -22,11 +22,11 @@
         MAX_RAY_DIST: for "ByDirect". Maximum distance between
                       points after which the execution will be stopped
                       Default value = 10.0
-        RUN: on/off script. Default value = True
+        RUN: on/off script
     Output:
         wayPoints: path points (Point3d: list)
-        wayOutsidePoints: point at the edge of the surface (Point3d: list)
         wayNormal: normal from every point on the surface (Vector3d: list)
+        wayOutsidePoints: point at the edge of the surface (Point3d: list)
 """
 
 __author__ = "AndriiPavlov"
@@ -65,9 +65,6 @@ if not MIN_RAY_DIST:
 
 if not MAX_RAY_DIST:
     MAX_RAY_DIST = 10.0
-
-if not RUN:
-    RUN = True
 
 
 def SameLengthList(list1, List2):
@@ -225,20 +222,23 @@ class Solver():
 
 
 
-wayPoints = []
-wayOutsidePoints = []
-wayNormal = []
 
 if RUN:
+    wayPoints = []
+    wayOutsidePoints = []
+    wayNormal = []
+
     for i in range(len(START_POINT_LIST)):
         solver = Solver(START_POINT_LIST[i], START_VEC_PROJ[i], START_VEC_DIR[i])
         solver.SolverForMultiplePoints(START_POINT_LIST[i], N_STEP)
 
-        wayPoints.append(solver.GetWayPointList())
-        wayOutsidePoints.append(solver.GetWayOutsidePoints())
-        wayNormal.append(solver.GetWayNormal())
+        if len(solver.GetWayPointList()) > 0:
+            wayPoints.append(solver.GetWayPointList())
+            wayOutsidePoints.append(solver.GetWayOutsidePoints())
+            wayNormal.append(solver.GetWayNormal())
+
+    wayPoints = th.list_to_tree(wayPoints)
+    wayOutsidePoints = th.list_to_tree(wayOutsidePoints)
+    wayNormal = th.list_to_tree(wayNormal)
 
 
-wayPoints = th.list_to_tree(wayPoints)
-wayOutsidePoints = th.list_to_tree(wayOutsidePoints)
-wayNormal = th.list_to_tree(wayNormal)
